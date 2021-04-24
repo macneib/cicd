@@ -186,6 +186,15 @@
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "options": {
+            "push": false,
+            "file": "apps/api/Dockerfile",
+            "tags": ["your-org/api:latest"],
+            "platforms": ["linux/amd64"]
+          }
         }
       }
     }
