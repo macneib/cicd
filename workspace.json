@@ -28,22 +28,15 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/my-app",
             "index": "apps/my-app/src/index.html",
             "main": "apps/my-app/src/main.tsx",
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.app.json",
-            "assets": [
-              "apps/my-app/src/favicon.ico",
-              "apps/my-app/src/assets"
-            ],
-            "styles": [
-              "apps/my-app/src/styles.scss"
-            ],
+            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
+            "styles": ["apps/my-app/src/styles.scss"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -86,23 +79,19 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/my-app/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/my-app"
-          ],
+          "outputs": ["coverage/apps/my-app"],
           "options": {
             "jestConfig": "apps/my-app/jest.config.js",
             "passWithNoTests": true
           }
         },
         "docker": {
-          "builder": "@nx-tools/nx-docker:build",
+          "executor": "@nx-tools/nx-docker:build",
           "options": {
             "push": false,
             "file": "apps/my-app/Dockerfile",
@@ -133,9 +122,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/my-app-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/my-app-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -147,16 +134,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ],
+            "assets": ["apps/api/src/assets"],
             "generatePackageJson": true
           },
           "configurations": {
@@ -182,28 +165,74 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/api"
-          ],
+          "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
           }
         },
         "docker": {
-          "builder": "@nx-tools/nx-docker:build",
+          "executor": "@nx-tools/nx-docker:build",
           "options": {
             "push": false,
             "file": "apps/api/Dockerfile",
             "tags": ["macneib/api:latest"],
             "platforms": ["linux/amd64"]
+          }
+        }
+      }
+    },
+    "pulumi": {
+      "root": "apps/pulumi",
+      "sourceRoot": "apps/pulumi/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/pulumi",
+            "main": "apps/pulumi/src/main.ts",
+            "tsConfig": "apps/pulumi/tsconfig.app.json",
+            "assets": ["apps/pulumi/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/pulumi/src/environments/environment.ts",
+                  "with": "apps/pulumi/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "pulumi:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/pulumi/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/pulumi"],
+          "options": {
+            "jestConfig": "apps/pulumi/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

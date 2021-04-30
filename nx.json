@@ -23,6 +23,7 @@
   "projects": {
     "my-app": { "tags": [] },
     "my-app-e2e": { "tags": [], "implicitDependencies": ["my-app"] },
-    "api": { "tags": [] }
+    "api": { "tags": [] },
+    "pulumi": { "tags": [] }
   }
 }
