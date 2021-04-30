@@ -1,13 +1,12 @@
-FROM node:12
+FROM node:12-alpine
 
 WORKDIR /app
 
-# install and cache app dependencies
-COPY package.json package-lock.json ./
+# add app
+COPY ./dist/apps/api ./
+COPY ./prisma ./prisma
+COPY .env ./
 RUN npm install --production
 
-# add app
-COPY ./dist/ ./
-
 # start app
-CMD node /app/apps/api/main.js
+CMD node main.js
