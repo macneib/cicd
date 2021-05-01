@@ -1,0 +1,15 @@
+{
+  "name": "@macneib/nx-helm",
+  "author": "macneib",
+  "repository": "https://github.com/macneib/nx-helm",
+  "bugs": "https://github.com/macneib/nx-helm/issues",
+  "license": "ISC",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "semver": "^7.3.4"
+  }
+}

@@ -236,6 +236,38 @@
           }
         }
       }
+    },
+    "nx-helm": {
+      "root": "packages/nx-helm",
+      "sourceRoot": "packages/nx-helm/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["packages/nx-helm/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-helm"],
+          "options": { "jestConfig": "packages/nx-helm/jest.config.js", "passWithNoTests": true }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-helm",
+            "tsConfig": "packages/nx-helm/tsconfig.lib.json",
+            "packageJson": "packages/nx-helm/package.json",
+            "main": "packages/nx-helm/src/index.ts",
+            "assets": [
+              "packages/nx-helm/*.md",
+              { "input": "./packages/nx-helm/src", "glob": "**/*.!(ts)", "output": "./src" },
+              { "input": "./packages/nx-helm", "glob": "generators.json", "output": "." },
+              { "input": "./packages/nx-helm", "glob": "executors.json", "output": "." }
+            ]
+          }
+        }
+      }
     }
   }
 }

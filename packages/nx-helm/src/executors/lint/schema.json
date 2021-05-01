@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "title": "Lint target",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "context": {
+      "type": "string",
+      "description": "Lint's context is the set of files located in the specified PATH or URL (default .)"
+    }
+  },
+  "required": []
+}
