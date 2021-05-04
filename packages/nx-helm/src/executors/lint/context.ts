@@ -2,7 +2,7 @@ import * as core from '@nx-tools/core';
 
 import { LintExecutorSchema } from './schema';
 
-let _defaultContext: string;
+// let _defaultContext: string;
 
 export interface Inputs {
   path: string;
@@ -12,7 +12,7 @@ export interface Inputs {
 }
 
 
-export async function getInputs(defaultContext: string, options: LintExecutorSchema): Promise<Inputs> {
+export async function getInputs(options: LintExecutorSchema): Promise<Inputs> {
   return {
     // context: core.getInput('context', options.context) || defaultContext,
     path: core.getInput('file', options.path),
@@ -22,24 +22,24 @@ export async function getInputs(defaultContext: string, options: LintExecutorSch
   };
 }
 
-export function defaultContext(): string {
-  if (!_defaultContext) {
-    _defaultContext = '.';
-  }
-  return _defaultContext;
-}
+// export function defaultContext(): string {
+//   if (!_defaultContext) {
+//     _defaultContext = '.';
+//   }
+//   return _defaultContext;
+// }
 
-export async function getArgs(inputs: Inputs, defaultContext: string, helmVersion: string): Promise<Array<string>> {
+export async function getArgs(inputs: Inputs): Promise<Array<string>> {
   const args: Array<string> = ['lint'];
   // eslint-disable-next-line prefer-spread
-  args.push.apply(args, await getLintArgs(inputs, defaultContext, helmVersion));
+  args.push.apply(args, await getLintArgs(inputs));
   // eslint-disable-next-line prefer-spread
   // args.push.apply(args, await getCommonArgs(inputs));
   // args.push(inputs.context);
   return args;
 }
 
-async function getLintArgs(inputs: Inputs, defaultContext: string, helmVersion: string): Promise<Array<string>> {
+async function getLintArgs(inputs: Inputs): Promise<Array<string>> {
   const args: Array<string> = [];
 
   // await core.asyncForEach(inputs.setString, async (setString) => {
@@ -61,7 +61,7 @@ async function getLintArgs(inputs: Inputs, defaultContext: string, helmVersion: 
   return args;
 }
 
-export async function getInputList(name: string, fallback?: string[], ignoreComma?: boolean): Promise<string[]> {
+export async function getInputList(name: string, fallback?: string[]): Promise<string[]> {
   const res: Array<string> = [];
 
   const items = core.getInput(name);

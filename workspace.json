@@ -98,6 +98,12 @@
             "tags": ["macneib/my-app:latest"],
             "platforms": ["linux/amd64"]
           }
+        },
+        "helm": {
+          "executor": "@macneib/nx-helm:lint",
+          "options": {
+            "path": "apps/my-app/chart/my-app"
+          }
         }
       }
     },
@@ -187,7 +193,10 @@
           }
         },
         "helm": {
-          "executor": "@macneib/nx-helm:lint"
+          "executor": "@macneib/nx-helm:lint",
+          "options": {
+            "path": "apps/api/chart/api"
+          }
         }
       }
     },

@@ -1,5 +1,3 @@
-
-
 import * as core from '@nx-tools/core';
 // import { config } from 'dotenv';
 import * as os from 'os';
@@ -26,18 +24,18 @@ export default async function run(options: LintExecutorSchema): Promise<{ succes
   core.info(`📣 Helm version: ${helmVersion}`);
 
 
-  const defContext = context.defaultContext();
-  const inputs: context.Inputs = await context.getInputs(defContext, options);
+  // const defContext = context.defaultContext();
+  const inputs: context.Inputs = await context.getInputs(options);
 
 
   core.info(`🏃 Starting lint...`);
-  const args: string[] = await context.getArgs(inputs, defContext, helmVersion);
+  const args: string[] = await context.getArgs(inputs);
 
   const helmCmd = `helm ${args.join(' ')}`;
 
   await exec.exec(`sh -c "${helmCmd}" `).then((res) => {
     if (res.stderr != '' && !res.success) {
-      throw new Error(`helm call failed with: ${res.stderr.match(/(.*)\s*$/)![0]}`);
+      throw new Error(`helm call failed with: ${res.stderr}`);
     }
   });
 
