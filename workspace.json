@@ -132,6 +132,12 @@
       "sourceRoot": "apps/api/src",
       "projectType": "application",
       "targets": {
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
@@ -156,12 +162,7 @@
             }
           }
         },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
-        },
+
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
@@ -176,7 +177,7 @@
             "passWithNoTests": true
           }
         },
-        "docker": {
+        "package": {
           "executor": "@nx-tools/nx-docker:build",
           "options": {
             "push": false,
@@ -184,6 +185,9 @@
             "tags": ["macneib/api:latest"],
             "platforms": ["linux/amd64"]
           }
+        },
+        "helm": {
+          "executor": "@macneib/nx-helm:lint"
         }
       }
     },

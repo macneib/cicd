@@ -45,6 +45,7 @@
   "private": true,
   "dependencies": {
     "@devoxa/prisma-relay-cursor-connection": "^1.1.1",
+    "@macneib/nx-helm": "^0.0.2",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",
@@ -57,6 +58,7 @@
     "@pulumi/vault": "^4.0.0",
     "apollo-server-express": "^2.23.0",
     "bcrypt": "^5.0.1",
+    "child_process": "^1.0.2",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "core-js": "^3.6.5",

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "executors": {
-    "build": {
+    "lint": {
       "implementation": "./src/executors/lint/main",
       "schema": "./src/executors/lint/schema.json",
       "description": "Runs helm lint"
