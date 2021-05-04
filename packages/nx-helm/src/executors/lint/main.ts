@@ -16,9 +16,10 @@ export default async function run(options: LintExecutorSchema): Promise<{ succes
     throw new Error(`Only supported on linux and darwin platform`);
   }
 
-  if (!(await helm.isAvailable())) {
-    throw new Error(`Helm is required. See https://helm.sh/docs/intro/install/ to set up helm.`);
-  }
+  // disabled until I can find a way to silence on success
+  // if (!(await helm.isAvailable())) {
+  //   throw new Error(`Helm is required. See https://helm.sh/docs/intro/install/ to set up helm.`);
+  // }
 
   // get version of helm
   const helmVersion = await helm.getVersion();
@@ -43,4 +44,3 @@ export default async function run(options: LintExecutorSchema): Promise<{ succes
   return { success: true };
 }
 
-run({"path": "./apps/my-app/chart/my-app"})

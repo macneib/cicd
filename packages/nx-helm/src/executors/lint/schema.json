@@ -9,7 +9,21 @@
       "type": "string",
       "description": "Path to the helm chart"
     },
-    "setString": {
+    "set": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "set values on the command line"
+    },
+    "set-file": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "set values from respective files specified via the command line"
+    },
+    "set-string": {
       "type": "string",
       "description": "set STRING values on the command line"
     },
@@ -17,10 +31,13 @@
       "type": "boolean",
       "description": "fail on lint warnings"
     },
+    "values": {
+      "type": "string",
+      "description": "specify values in a YAML file or a URL "
+    },
     "withSubcharts": {
       "type": "boolean",
       "description": "lint dependent charts"
     }
-  },
-  "additionalProperties": true
+  }
 }

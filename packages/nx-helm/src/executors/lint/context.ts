@@ -16,12 +16,11 @@ export async function getInputs(defaultContext: string, options: LintExecutorSch
   return {
     // context: core.getInput('context', options.context) || defaultContext,
     path: core.getInput('file', options.path),
-    // setString: await getInputList('build-args', options.setString, true),
-    strict: /true/i.test(core.getInput('no-cache', core.parseBoolean(options.strict))),
-    withSubcharts: /true/i.test(core.getInput('pull', core.parseBoolean(options.withSubcharts))),
+    // setString: await getInputList('set-string', options.setString, true),
+    strict: /true/i.test(core.getInput('strict', core.parseBoolean(options.strict))),
+    withSubcharts: /true/i.test(core.getInput('with-subcharts', core.parseBoolean(options.withSubcharts))),
   };
 }
-
 
 export function defaultContext(): string {
   if (!_defaultContext) {
@@ -29,7 +28,6 @@ export function defaultContext(): string {
   }
   return _defaultContext;
 }
-
 
 export async function getArgs(inputs: Inputs, defaultContext: string, helmVersion: string): Promise<Array<string>> {
   const args: Array<string> = ['lint'];
@@ -42,12 +40,26 @@ export async function getArgs(inputs: Inputs, defaultContext: string, helmVersio
 }
 
 async function getLintArgs(inputs: Inputs, defaultContext: string, helmVersion: string): Promise<Array<string>> {
-  const args: Array<string> = ["./apps/my-app/chart/my-app"];
+  const args: Array<string> = [];
+
+  // await core.asyncForEach(inputs.setString, async (setString) => {
+  //   args.push('--set-string', setString);
+  // });
+
+  if (inputs.strict) {
+    args.push('--strict');
+  }
+
+  if (inputs.withSubcharts) {
+    args.push('--with-subcharts');
+  }
+
+  if (inputs.path) {
+    args.push(inputs.path);
+  }
 
   return args;
 }
-
-
 
 export async function getInputList(name: string, fallback?: string[], ignoreComma?: boolean): Promise<string[]> {
   const res: Array<string> = [];
@@ -56,21 +68,6 @@ export async function getInputList(name: string, fallback?: string[], ignoreComm
   if (items == '') {
     return fallback ?? res;
   }
-
-  // for (const output of (await csvparse(items, {
-  //   columns: false,
-  //   relaxColumnCount: true,
-  //   skipLinesWithEmptyValues: true,
-  // })) as Array<string[]>) {
-  //   if (output.length == 1) {
-  //     res.push(output[0]);
-  //     continue;
-  //   } else if (!ignoreComma) {
-  //     res.push(...output);
-  //     continue;
-  //   }
-  //   res.push(output.join(','));
-  // }
 
   return res.filter((item) => item).map((pat) => pat.trim());
 }
