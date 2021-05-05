@@ -1,5 +1,9 @@
 # nx-helm
 
+This is still a work in progress.
+
+Currently only helm lint will work.
+
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests

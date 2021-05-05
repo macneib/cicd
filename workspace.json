@@ -28,15 +28,22 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/my-app",
             "index": "apps/my-app/src/index.html",
             "main": "apps/my-app/src/main.tsx",
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.app.json",
-            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
-            "styles": ["apps/my-app/src/styles.scss"],
+            "assets": [
+              "apps/my-app/src/favicon.ico",
+              "apps/my-app/src/assets"
+            ],
+            "styles": [
+              "apps/my-app/src/styles.scss"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -79,12 +86,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/my-app/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/my-app"],
+          "outputs": [
+            "coverage/apps/my-app"
+          ],
           "options": {
             "jestConfig": "apps/my-app/jest.config.js",
             "passWithNoTests": true
@@ -95,11 +106,15 @@
           "options": {
             "push": false,
             "file": "apps/my-app/Dockerfile",
-            "tags": ["macneib/my-app:latest"],
-            "platforms": ["linux/amd64"]
+            "tags": [
+              "macneib/my-app:latest"
+            ],
+            "platforms": [
+              "linux/amd64"
+            ]
           }
         },
-        "helm": {
+        "helm:lint": {
           "executor": "@macneib/nx-helm:lint",
           "options": {
             "path": "apps/my-app/chart/my-app"
@@ -128,7 +143,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/my-app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/my-app-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -146,12 +163,16 @@
         },
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"],
+            "assets": [
+              "apps/api/src/assets"
+            ],
             "generatePackageJson": true
           },
           "configurations": {
@@ -168,16 +189,19 @@
             }
           }
         },
-
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
+          "outputs": [
+            "coverage/apps/api"
+          ],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -188,8 +212,12 @@
           "options": {
             "push": false,
             "file": "apps/api/Dockerfile",
-            "tags": ["macneib/api:latest"],
-            "platforms": ["linux/amd64"]
+            "tags": [
+              "macneib/api:latest"
+            ],
+            "platforms": [
+              "linux/amd64"
+            ]
           }
         },
         "helm": {
@@ -207,12 +235,16 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/pulumi",
             "main": "apps/pulumi/src/main.ts",
             "tsConfig": "apps/pulumi/tsconfig.app.json",
-            "assets": ["apps/pulumi/src/assets"]
+            "assets": [
+              "apps/pulumi/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -237,12 +269,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/pulumi/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/pulumi/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/pulumi"],
+          "outputs": [
+            "coverage/apps/pulumi"
+          ],
           "options": {
             "jestConfig": "apps/pulumi/jest.config.js",
             "passWithNoTests": true
@@ -257,16 +293,27 @@
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["packages/nx-helm/**/*.ts"] }
+          "options": {
+            "lintFilePatterns": [
+              "packages/nx-helm/**/*.ts"
+            ]
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/packages/nx-helm"],
-          "options": { "jestConfig": "packages/nx-helm/jest.config.js", "passWithNoTests": true }
+          "outputs": [
+            "coverage/packages/nx-helm"
+          ],
+          "options": {
+            "jestConfig": "packages/nx-helm/jest.config.js",
+            "passWithNoTests": true
+          }
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/packages/nx-helm",
             "tsConfig": "packages/nx-helm/tsconfig.lib.json",
@@ -274,10 +321,100 @@
             "main": "packages/nx-helm/src/index.ts",
             "assets": [
               "packages/nx-helm/*.md",
-              { "input": "./packages/nx-helm/src", "glob": "**/*.!(ts)", "output": "./src" },
-              { "input": "./packages/nx-helm", "glob": "generators.json", "output": "." },
-              { "input": "./packages/nx-helm", "glob": "executors.json", "output": "." }
+              {
+                "input": "./packages/nx-helm/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-helm",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-helm",
+                "glob": "executors.json",
+                "output": "."
+              }
             ]
+          }
+        }
+      }
+    },
+    "api-foo-service": {
+      "root": "apps/api-foo-service",
+      "sourceRoot": "apps/api-foo-service/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/api-foo-service",
+            "main": "apps/api-foo-service/src/main.ts",
+            "tsConfig": "apps/api-foo-service/tsconfig.app.json",
+            "assets": [
+              "apps/api-foo-service/src/assets"
+            ],
+            "generatePackageJson": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api-foo-service/src/environments/environment.ts",
+                  "with": "apps/api-foo-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api-foo-service:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/api-foo-service/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/api-foo-service"
+          ],
+          "options": {
+            "jestConfig": "apps/api-foo-service/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "executor": "@nx-tools/nx-docker:build",
+          "options": {
+            "push": true,
+            "file": "apps/api-foo-service/Dockerfile",
+            "tags": [
+              "macneib/api-foo-service:latest"
+            ],
+            "platforms": [
+              "linux/amd64"
+            ]
+          }
+        },
+        "helm:lint": {
+          "executor": "@macneib/nx-helm:lint",
+          "options": {
+            "path": "apps/api-foo-service/chart"
           }
         }
       }

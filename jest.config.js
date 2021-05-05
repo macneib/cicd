@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/my-app',
     '<rootDir>/apps/api',
     '<rootDir>/apps/pulumi',
+    '<rootDir>/apps/api-foo-service',
   ],
 };
