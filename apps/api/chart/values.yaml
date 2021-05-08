@@ -5,8 +5,8 @@
 replicaCount: 3
 
 image:
-  repository: macneib/api-foo-service
-  tag: 0.1.0
+  repository: macneib/api
+  tag: latest
   pullPolicy: Always
 
 nameOverride: ""

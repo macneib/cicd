@@ -104,7 +104,7 @@
         "docker": {
           "executor": "@nx-tools/nx-docker:build",
           "options": {
-            "push": false,
+            "push": true,
             "file": "apps/my-app/Dockerfile",
             "tags": [
               "macneib/my-app:latest"
@@ -210,7 +210,7 @@
         "package": {
           "executor": "@nx-tools/nx-docker:build",
           "options": {
-            "push": false,
+            "push": true,
             "file": "apps/api/Dockerfile",
             "tags": [
               "macneib/api:latest"
@@ -224,64 +224,6 @@
           "executor": "@macneib/nx-helm:lint",
           "options": {
             "path": "apps/api/chart/api"
-          }
-        }
-      }
-    },
-    "pulumi": {
-      "root": "apps/pulumi",
-      "sourceRoot": "apps/pulumi/src",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/pulumi",
-            "main": "apps/pulumi/src/main.ts",
-            "tsConfig": "apps/pulumi/tsconfig.app.json",
-            "assets": [
-              "apps/pulumi/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/pulumi/src/environments/environment.ts",
-                  "with": "apps/pulumi/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "pulumi:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/pulumi/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/pulumi"
-          ],
-          "options": {
-            "jestConfig": "apps/pulumi/jest.config.js",
-            "passWithNoTests": true
           }
         }
       }
@@ -415,6 +357,75 @@
           "executor": "@macneib/nx-helm:lint",
           "options": {
             "path": "apps/api-foo-service/chart"
+          }
+        }
+      }
+    },
+    "workspace": {
+      "targets": {
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": true
+          }
+        }
+      },
+      "root": "."
+    },
+    "api-bar-service": {
+      "root": "apps/api-bar-service",
+      "sourceRoot": "apps/api-bar-service/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/api-bar-service",
+            "main": "apps/api-bar-service/src/main.ts",
+            "tsConfig": "apps/api-bar-service/tsconfig.app.json",
+            "assets": [
+              "apps/api-bar-service/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api-bar-service/src/environments/environment.ts",
+                  "with": "apps/api-bar-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api-bar-service:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/api-bar-service/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/api-bar-service"
+          ],
+          "options": {
+            "jestConfig": "apps/api-bar-service/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

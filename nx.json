@@ -24,8 +24,9 @@
     "my-app": { "tags": [] },
     "my-app-e2e": { "tags": [], "implicitDependencies": ["my-app"] },
     "api": { "tags": [] },
-    "pulumi": { "tags": [] },
     "nx-helm": { "tags": ["plugin"] },
-    "api-foo-service": { "tags": [] }
+    "api-foo-service": { "tags": [] },
+    "workspace": { "tags": [] },
+    "api-bar-service": { "tags": [] }
   }
 }
