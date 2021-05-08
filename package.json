@@ -1,6 +1,6 @@
 {
   "name": "cicd",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -81,6 +81,7 @@
     "@babel/preset-env": "7.9.6",
     "@babel/preset-react": "7.9.4",
     "@babel/preset-typescript": "7.9.0",
+    "@jscutlery/semver": "^2.1.0",
     "@nestjs/cli": "^7.6.0",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
