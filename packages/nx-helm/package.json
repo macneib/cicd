@@ -4,7 +4,7 @@
   "repository": "https://github.com/macneib/nx-helm",
   "bugs": "https://github.com/macneib/nx-helm/issues",
   "license": "ISC",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.js",
   "generators": "./generators.json",
   "executors": "./executors.json",
