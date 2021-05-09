@@ -45,7 +45,7 @@
   "private": true,
   "dependencies": {
     "@devoxa/prisma-relay-cursor-connection": "^1.1.1",
-    "@macneib/nx-helm": "^0.1.0",
+    "@macneib/nx-helm": "^0.1.1",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.0.0",

@@ -117,7 +117,7 @@
         "helm:lint": {
           "executor": "@macneib/nx-helm:lint",
           "options": {
-            "path": "apps/my-app/chart/my-app"
+            "path": "apps/my-app/chart"
           }
         }
       }
@@ -426,6 +426,25 @@
           "options": {
             "jestConfig": "apps/api-bar-service/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "executor": "@nx-tools/nx-docker:build",
+          "options": {
+            "push": true,
+            "file": "apps/api-foo-service/Dockerfile",
+            "tags": [
+              "macneib/api-bar-service:latest"
+            ],
+            "platforms": [
+              "linux/amd64"
+            ]
+          }
+        },
+        "helm:lint": {
+          "executor": "@macneib/nx-helm:lint",
+          "options": {
+            "path": "apps/api-bar-service/chart"
           }
         }
       }

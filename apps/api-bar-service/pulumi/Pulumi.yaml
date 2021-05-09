@@ -1,0 +1,3 @@
+name: api-bar-service
+runtime: nodejs
+description: A minimal Kubernetes TypeScript Pulumi program
