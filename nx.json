@@ -1,13 +1,18 @@
 {
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "main" },
+  "affected": {
+    "defaultBase": "main"
+  },
   "npmScope": "cicd",
   "tasksRunnerOptions": {
     "default": {
@@ -21,12 +26,49 @@
     }
   },
   "projects": {
-    "my-app": { "tags": [] },
-    "my-app-e2e": { "tags": [], "implicitDependencies": ["my-app"] },
-    "api": { "tags": [] },
-    "nx-helm": { "tags": ["plugin"] },
-    "api-foo-service": { "tags": [] },
-    "workspace": { "tags": [] },
-    "api-bar-service": { "tags": [] }
+    "my-app": {
+      "tags": []
+    },
+    "my-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["my-app"]
+    },
+    "api": {
+      "tags": []
+    },
+    "nx-helm": {
+      "tags": ["plugin"]
+    },
+    "api-foo-service": {
+      "tags": []
+    },
+    "workspace": {
+      "tags": []
+    },
+    "api-bar-service": {
+      "tags": []
+    },
+    "kappa-service": {
+      "tags": []
+    },
+    "api-node-app-test": {
+      "tags": []
+    },
+    "node-test-lib": {
+      "tags": []
+    },
+    "app-node-js-test": {
+      "tags": []
+    },
+    "lib-node-test-js": {
+      "tags": []
+    },
+    "myappjs": {
+      "tags": []
+    },
+    "myappjs-e2e": {
+      "tags": [],
+      "implicitDependencies": ["myappjs"]
+    }
   }
 }

@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@macneib/nx-helm": ["packages/nx-helm/src/index.ts"]
+      "@macneib/nx-helm": ["packages/nx-helm/src/index.ts"],
+      "@cicd/node-test-lib": ["libs/node-test-lib/src/index.ts"],
+      "@cicd/lib-node-test-js": ["libs/lib-node-test-js/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]
